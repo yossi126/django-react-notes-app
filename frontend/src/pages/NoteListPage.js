@@ -9,14 +9,18 @@ const NoteListPage = () => {
   }, []);
 
   const getNotes = async () => {
-    const response = await fetch("http://127.0.0.1:8000/api/notes/");
+    const response = await fetch("/api/notes/");
     const data = await response.json();
     setNotes(data);
     // console.log(data);
   };
 
   return (
-    <div>
+    <div className="notes">
+      <div className="notes-header">
+        <h2 className="notes-title">&#9782;</h2>
+        <p className="notes-count">{notes.length}</p>
+      </div>
       <div className="notes-list">
         {notes.map((note) => (
           <ListItem note={note} key={note.id} />
